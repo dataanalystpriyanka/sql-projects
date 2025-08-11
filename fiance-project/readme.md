@@ -72,27 +72,32 @@ Repeat purchases by client-merchant pair
 MCC (merchant category code) spending breakdown
 
 🔍 Highlighted Query Samples
+
 sql
 -- Label transactions as High / Medium / Low
-SELECT id, amount,
-  CASE
-    WHEN amount >= 500 THEN 'High'
-    WHEN amount >= 100 THEN 'Medium'
-    ELSE 'Low'
-  END AS transaction_level
+
+SELECT id, amount, CASE
+amount >= 500 THEN 'High' 
+WHEN amount >= 100 THEN 'Medium'
+ELSE 'Low'
+END AS transaction_level
 FROM transactions;
 
 -- Monthly average spend per client
+
 SELECT client_id, DATE_TRUNC('month', date) AS month, AVG(amount)
 FROM transactions
 GROUP BY client_id, month;
 
 -- Clients with multiple card brands
+
 SELECT client_id, COUNT(DISTINCT card_brand)
 FROM cards
 GROUP BY client_id
 HAVING COUNT(DISTINCT card_brand) > 1;
+
 🛠️ Tech Stack
+
 PostgreSQL
 
 SQL Aggregations
@@ -103,18 +108,3 @@ Conditional Logic
 
 Data Cleaning
 
-🚀 How to Use
-Load the tables: clients, cards, transactions.
-
-Execute the queries individually in your SQL environment.
-
-Explore or extend with more client behavior metrics.
-
-📌 Use Cases Demonstrated
-Financial analytics
-
-Behavioral segmentation
-
-Fraud & risk flagging (high debt, repeat transactions)
-
-Card issuance and lifecycle tracking
