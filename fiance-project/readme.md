@@ -24,7 +24,7 @@ Table Name	Description
 
 clients	Contains client demographics, financial stats like credit score and income
 cards	Stores data about card types, brands, expiration, and client link
-transactions	Logs all financial transactions including amount, merchant, and card used
+transactions. Logs all financial transactions including amount, merchant, and card used
 
 ✅ Key SQL Features Demonstrated
 
